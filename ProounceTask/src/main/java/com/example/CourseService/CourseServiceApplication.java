@@ -1,13 +1,13 @@
-package com.example.ProounceTask;
+package com.example.CourseService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProounceTaskApplication {
+public class CourseServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProounceTaskApplication.class, args);
+		SpringApplication.run(CourseServiceApplication.class, args);
 	}
 
 }

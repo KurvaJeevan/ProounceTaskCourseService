@@ -1,20 +1,21 @@
-package com.example.ProounceTask;
+package com.example.CourseService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CourseService {
+public class CourseServices {
 	ResponseStructure<Course> rs = new ResponseStructure<Course>();
 	@Autowired
 	private CouseManager c;
 	
 
-	public ResponseStructure<Course> getCourseById(int id) {
+	public ResponseEntity<ResponseStructure<Course>> getCourseById(int id) {
 		// TODO Auto-generated method stub
 	
 
@@ -25,17 +26,17 @@ public class CourseService {
 				rs.setMessage("Course Found Successfully");
 				rs.setValue(course);
 				rs.setStatuscode(HttpStatus.OK.value());
-				return rs;
+				return new ResponseEntity<ResponseStructure<Course>>(rs,HttpStatus.OK);
 			}
 		}
 		rs.setMessage("Course Not Found");
 		rs.setStatuscode(HttpStatus.NOT_FOUND.value());
 		rs.setValue(null);
-		return rs;
+		return new ResponseEntity<ResponseStructure<Course>>(rs,HttpStatus.NOT_FOUND);
 
 	}
 
-	public ResponseStructure<List<Course>> getCoursesByIds(int[] ids) {
+	public ResponseEntity<ResponseStructure<List<Course>>> getCoursesByIds(int[] ids) {
 		// TODO Auto-generated method stub
 		ResponseStructure<List<Course>> rs = new ResponseStructure<List<Course>>();
 		CouseManager c = new CouseManager();
@@ -50,13 +51,11 @@ public class CourseService {
 				}
 			}
 		}
-//		rs.setMessage("Course Found Successfully");
-//		rs.setValue(course);
-//		rs.setStatuscode(HttpStatus.OK.value());
+
 		rs.setMessage("Courses found");
 		rs.setStatuscode(HttpStatus.FOUND.value());
 		rs.setValue(newcourselist);
-		return rs;
+		return new ResponseEntity<ResponseStructure<List<Course>>>(rs,HttpStatus.OK);
 
 	}
 

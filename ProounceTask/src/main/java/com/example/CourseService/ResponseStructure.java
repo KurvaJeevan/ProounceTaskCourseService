@@ -1,4 +1,4 @@
-package com.example.ProounceTask;
+package com.example.CourseService;
 
 public class ResponseStructure <T>{
 	private int statuscode;

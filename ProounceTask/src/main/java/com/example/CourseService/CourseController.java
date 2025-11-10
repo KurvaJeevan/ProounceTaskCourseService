@@ -1,8 +1,9 @@
-package com.example.ProounceTask;
+package com.example.CourseService;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,16 +15,16 @@ import jakarta.validation.Valid;
 public class CourseController {
 	
 	@Autowired
-	private CourseService cs;
+	private CourseServices cs;
 	
 	@GetMapping("/courses/{id}")
-	public ResponseStructure<Course> getCourse(@PathVariable @Valid int id) {
+	public ResponseEntity<ResponseStructure<Course>> getCourse(@PathVariable @Valid int id) {
 		
 		return cs.getCourseById(id);
 	}
 	
 	@GetMapping("/courses")
-	public ResponseStructure<List<Course>> getCourses(@RequestParam int [] ids) {
+	public ResponseEntity<ResponseStructure<List<Course>>> getCourses(@RequestParam int [] ids) {
 		return cs.getCoursesByIds(ids);
 	}
 }
